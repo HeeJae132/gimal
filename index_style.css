@@ -1,0 +1,83 @@
+body {
+  background-color: #050098;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+}
+
+h1 {
+  color: white;
+  font-size: 48px;
+  font-family: '굴림', sans-serif;
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: 100;
+  margin-bottom: 4px;
+}
+
+h2 {
+  color: white;
+  font-size: 20px;
+  font-family: '굴림', sans-serif;
+  text-align: center;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.center-box {
+  width: 1120px;
+  height: 600px;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1px;
+  border-color: black;
+  border-width: 10px;
+}
+
+.icon-text-container {
+  text-align: center;
+  font-size: 24px;
+  width: 23%; 
+}
+
+.icon-text-container:nth-child(n+5) {
+  width: 10%;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+p {
+  color: black;
+  margin-top: 8px;
+  font-size: 16px;
+  font-family: '굴림', sans-serif;
+}
+
+.icon-text-container:nth-child(n+5) {
+  margin-top: -100px; /* 두 번째 줄의 아이템들 간의 간격을 줄임 */
+}
+
+/* 링크 스타일 추가 */
+.icon-text-container a {
+  display: block; /* 링크를 블록 요소로 만들어서 내부 요소들이 잘 정렬되도록 */
+  text-decoration: none; /* 기본 링크 스타일 제거 */
+}
+
+.icon-text-container a:focus,
+.icon-text-container a:hover {
+  outline: none; /* 링크 클릭시 테두리 안 보이게 */
+}

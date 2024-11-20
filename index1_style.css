@@ -1,0 +1,350 @@
+body {
+  font-family: 'DungGeunMo', sans-serif; /* 사용하고자 하는 글씨체 */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  cursor: default;
+  }
+
+.cursor-custom {
+  cursor: url('pointerchange.png') ,auto; /* 원하는 커서 이미지로 변경 */
+  z-index: 10000; 
+  }
+  
+.rect1, .rect2, .rect3, .panel, .text-list, .closebutton,.okaybutton, #alertbox ,#closeBtn {
+    font-family: inherit; /* 상속받은 글씨체 사용 */
+  }
+
+.rect1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #5658fb;
+    background-image: radial-gradient(circle, black 1px, transparent 1px);
+    background-size: 10px 10px; /* 점 크기와 간격 조정 */
+    z-index: 2;
+  }
+  
+.rect2 {
+  position: absolute;
+  top: 30px; 
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fdfd57;
+  z-index: 1; 
+  border: 2px solid black;
+}
+
+.rect3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-color: #52ff7d; 
+  border: 2px solid black;
+  z-index: 1;
+}
+
+.panel {
+  position: absolute;
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  background-color: black;
+  color: white; 
+  font-size: 30px; 
+  padding: 5px 10px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 30px; 
+  font-family: 'DungGeunMo';
+  z-index: 3;
+}
+
+.closebutton {
+  position: absolute;
+  top: 5px; 
+  left: 5px; /* rect1의 왼쪽 끝에서 5px 떨어진 위치 */
+  width: 30px; /* 버튼의 가로 크기 (필요에 맞게 조정) */
+  height: 30px; /* rect1의 세로 크기와 동일하게 설정 */
+  background-image: url('closebutton1.png'); /* 이미지 버튼의 URL */
+  background-size: cover; /* 이미지 크기 맞추기 */
+  border: none; /* 버튼의 기본 테두리 제거 */
+  cursor: auto; /* 버튼이 클릭 가능하게 표시 */
+  z-index: 2; /* panel보다 위에 표시되도록 설정 */
+}
+
+.text-list {
+  position: absolute;
+  top: 160px; /* rect1, rect2, rect3 영역을 피해서 텍스트 리스트 위치 설정 */
+  left: 5px;
+  right: 10%;
+  bottom: 100px; /* rect3의 높이를 고려하여 아래로 일정한 여백을 둡니다. */
+  overflow-y: auto; /* 텍스트 리스트가 화면을 넘지 않도록 스크롤을 추가 */
+  z-index: 0; 
+  font-size: 18px;
+  list-style-type: none; /* 기본 리스트 스타일 제거 */
+  padding: 20px; /* 여백 추가 */
+  background-color: rgba(255, 255, 255, 0.7); /* 반투명 배경 */
+}
+
+.text-list li {
+  margin-bottom: 20px; /* 각 항목 사이에 여백 추가 */
+  font-family: inherit;
+  font-size: 40px;
+  color:black
+}
+
+.text-list li.active {
+  background-color: black; /* 검은 바탕 */
+  color: white; /* 흰 텍스트 */
+  display: inline-block;
+}
+
+.controls {
+  position: fixed;
+  margin-bottom: 20px;
+  font-family: inherit;
+  top: 110px;
+  left: 20px;
+  width:150px;
+  background-color: #000000;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  font-size : 40px;
+  color : white;
+  gap:20px;
+}
+
+#fontSizeSlider {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 10px; /* 슬라이더 트랙 높이 */
+  background: white;
+  outline: none;
+  cursor: pointer;
+}
+
+#fontSizeSlider::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 8px;
+  background: transparent;
+}
+
+/* 슬라이더 손잡이 */
+#fontSizeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background:white;
+  cursor: pointer;
+}
+
+/*팝업 */
+#popup1 {
+  display: none;
+  position: fixed;
+  top: 0; /* 맨 위로 배치 */
+  left: 0; /* 왼쪽 끝으로 배치 */
+  width: 100vw; /* 전체 너비 */
+  height: 100vh; /* 전체 높이 */
+  z-index: 1000; /* 오버레이 위로 배치 */
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 0; /* 모서리 둥글기를 없앰 */
+  font-size: 16px;
+  box-shadow: none; /* 그림자 없앰 */
+}
+
+
+#popup2 {
+  display: none;
+  position: fixed;
+  top: 0; /* 맨 위로 배치 */
+  left: 0; /* 왼쪽 끝으로 배치 */
+  width: 100vw; /* 전체 너비 */
+  height: 100vh; /* 전체 높이 */
+  z-index: 1000; /* 오버레이 위로 배치 */
+  background-color: rgb(255, 255, 255);
+  border-radius: 0; /* 모서리 둥글기를 없앰 */
+  font-size: 16px;
+  box-shadow: none; /* 그림자 없앰 */
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0; /* 팝업 아래에 배치 */
+}
+
+.popup-overlay.active {
+  display: block;
+}
+
+.popup-content .title {
+  color: black; /* 글씨 색상 */
+  font-size: 80px; /* 글씨 크기 */
+  line-height: 1.5; /* 줄 간격 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  margin-top: 180px; /* 상단 여백을 120px로 설정 */
+  margin-bottom: 30px;
+  margin-left: 20px;
+  width:1000px;
+}
+
+.contenttwo{
+  color: black;
+  font-size: 30px;        
+  font-weight: normal;    
+  line-height: 1.6;      
+  text-align: left;       
+  margin: 0;                
+  width: 60%;  
+  margin-left:20px; 
+}
+
+.text-image-container {
+  display: flex;            /* 가로 배치 */
+  align-items:center;  /*  정렬 */
+  gap: 200px;                /* 텍스트와 이미지 사이 간격 */
+}
+
+.content {
+  color: black;
+  font-size: 20px;        
+  font-weight: normal;    
+  line-height: 1.6;      
+  text-align: left;       
+  margin: 0;                
+  width: 60%;  
+  margin-left:20px;          
+}
+
+.okaybutton {
+  color: black; /* 글자 색상 */
+  background-color: white; /* 버튼 배경색 */
+  border: 2px solid black; /* 테두리 설정 */
+  border-radius: 50px; 
+  font-size: 30px; /* 글씨 크기 */
+  padding: 10px 20px; /* 버튼 내부 여백 */
+  margin-left:20px;
+}
+
+/* 이미지 둥둥 떠다니는 애니메이션 */
+@keyframes float {
+  0% {
+    transform: translateY(0); /* 초기 위치 */
+  }
+  50% {
+    transform: translateY(-20px); /* 위로 이동 */
+  }
+  100% {
+    transform: translateY(0); /* 원래 위치로 복귀 */
+  }
+}
+
+/* pointer 이미지에 애니메이션 적용 */
+.popup-image {
+  max-width: 10%;           /* 이미지 최대 너비 */
+  height: auto;             /* 높이는 비율 유지 */
+  margin: 0;                /* 기본 여백 제거 */
+  animation: float 2s infinite ease-in-out; /* 애니메이션 적용 */
+}
+
+.popup-image:hover {
+  animation-play-state: paused; /* 호버 시 애니메이션 멈춤 */
+}
+
+#alertBox {
+  display: none;  /* 처음에는 숨겨놓음 */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 2px solid #000000;
+  padding: 20px;
+  z-index: 100;
+  width: 400px;
+  text-align: center;
+}
+
+#alertBox .blue-bar {
+  height: 20px;
+  background-color: #5658fb;
+  background-image: radial-gradient(circle, black 1px, transparent 1px);
+  background-size: 10px 10px; /* 점 크기와 간격 조정 */
+  width: 100%;/* 블루바의 길이가 alerbox크기와 같도록 */
+  position: absolute;  /* blue-bar 위치 고정 */
+  top: 0;  /* alertBox 상단에 위치 */
+  left: 0;
+  z-index: 101;  /* blue-bar가 맨 위에 오도록 설정 */
+}
+
+.alert-content {
+  padding: 20px;
+}
+
+button {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+#closeBtn {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#popup2 .gamearea {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #52ff52; /* 초록 배경 */
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  z-index: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* 10개의 열 */
+  grid-template-rows: repeat(10, 1fr); /* 10개의 행 */
+  width: 500px; /* 격자의 전체 너비 */
+  height: 500px; /* 격자의 전체 높이 */
+  border-right: 20px solid black; /* 오른쪽 테두리 두껍게 */
+  border-bottom: 20px solid black; /* 아래쪽 테두리 두껍게 */
+}
+
+.grid-container div {
+  background-color: #bebebe; /* 각 셀의 배경색 */
+  border: 1px solid black; /* 각 셀의 테두리 */
+  position: relative; /* 원의 위치 기준 */
+}
+
+.circle {
+  position: absolute;
+  width: 40px; /* 원의 크기 */
+  height: 40px;
+  background-color: #f95a4f !important;  /* 원 색상 */
+  border-radius: 50%; /* 원 모양 만들기 */
+  top: 50%; /* 수직 중앙 */
+  left: 50%; /* 수평 중앙 */
+  transform: translate(-50%, -50%); /* 정확한 중앙 배치 */
+}

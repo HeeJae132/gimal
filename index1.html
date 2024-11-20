@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index1_style.css">  
+    <title>window1.0</title>
+</head>
+<body>
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="panel">Control panel</div>
+    <div class="closebutton"></div>
+    <div class="controls">
+        <label for="fontSizeSlider">A: </label>
+        <input
+            type="range"
+            id="fontSizeSlider"
+            min="20"
+            max="100"
+            value="40"
+        />
+    </div>
+    
+    <ul class="text-list">
+        <li data-popup="popup1"><span>README.TXT</span></li>
+        <li data-popup="popup2"><span>GAME.EXE</span></li>
+    </ul>
+
+    <div id="popup1" class="popup-content">
+        <div class="rect1"></div> <!-- 직사각형 추가 -->
+        <div class="closebutton"></div> <!--버튼 추가-->
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="panel">README.TXT</div>
+        <p class="title">인간과 컴퓨터의 첫 소통</p>
+        <p class="contenttwo">
+          우측의 커서 이미지를 클릭한 후 확인을 눌러보세요.
+      </p>   
+        <div class="text-image-container">
+        <p class="content">
+            클릭은 컴퓨터와 소통하는 방법 중 하나로, WINDOWS 1.0에서 처음 도입되었습니다.<br> 
+            사용자들은 더 이상 명령어를 하나하나 입력할 필요 없이<br>
+            커서를 사용해 클릭 한 번으로 원하는 프로그램을 실행할 수 있게 되었습니다.<br>
+        </p>    
+        <img src="pointer.png" alt="소통의 시작" class="popup-image">
+        </div>
+        
+        <button class="okaybutton"> 확인</button>
+    
+        <!-- popup1 안 확인 버튼을 누르면 생기는 알림창 -->
+        <div id="alertBox" class="alert-box">
+          <div class="alert-content">
+            <div class="blue-bar"></div>
+              <p>당신과 컴퓨터의 첫번째 소통을 축하합니다!</p>
+              <button id="closeBtn" class="close-btn">감격</button>
+            </div>
+        </div>
+    
+    </div>
+        
+    <div id="popup2" class="popup-content">
+     <div class="rect1"></div> <!-- 직사각형 추가 -->
+     <div class="rect1"></div> <!-- 직사각형 추가 -->
+     <div class="closebutton"></div> <!--버튼 추가-->
+     <div class="rect2"></div>
+     <div class="rect3"></div>
+     <div class="panel">GAME.EXE</div>
+     <div class="gamearea">
+      <div class="grid-container"></div>
+     </div>
+  
+    <div class="popup-overlay"></div>
+
+    <script type="text/javascript" src="script1.js"></script>  
+</body>
+</html>
